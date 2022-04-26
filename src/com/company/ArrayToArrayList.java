@@ -24,13 +24,13 @@ public class ArrayToArrayList {
         System.out.println(list1);
         return list1;
     }
-//    public void reArray(String[]arr){
-//        List<String> list2 = new ArrayList<String>();
-//        for(String text:arr) {
-//            list2.add(text);
-//        }
-//        System.out.println(list2);
-//    }
+    public void reArray(String[]arr){
+        List<String> list2 = new ArrayList<String>();
+        for(String text:arr) {
+            list2.remove(text);
+        }
+        System.out.println(list2);
+    }
 
     public static void main(String[] args) {
         ArrayToArrayList a=new ArrayToArrayList();
@@ -38,6 +38,6 @@ public class ArrayToArrayList {
         String[] arr2 ={"Moo","lol","qq","mmm"};
         a.conArray(arr);
         a.conListToArray(arr,arr2);
-       //a.reArray(arr);
+        //a.reArray(arr2);
     }
 }

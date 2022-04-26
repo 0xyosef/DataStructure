@@ -1,18 +1,15 @@
 package com.company;
-
+// 17 ,37
 import java.util.Scanner;
-
+// > Greaten number
 public class m {
 
 
     public static void main(String[] args) {
-       long n1,n2;
-        Scanner s=new Scanner(System.in);
-        n1=s.nextInt();
-        n2=s.nextInt();
-        if (n1%n2==0){
-            System.out.println("0");
-         }else
-            System.out.println(n1);
+        // && and true && true = true
+        // || or
+        //f -f =f
+        System.out.println(1+4*4>5*(4+3)-1 && (4-3<5));//false
+        System.out.println(1+4*4>5*(4+3)-1 || (4-3<5));//false
     }
 }
