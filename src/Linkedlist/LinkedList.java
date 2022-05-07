@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class LinkedList {
     Scanner sc=new Scanner(System.in);
     Node newNode;
-    Node head=null;
-    Node tail=null;
+    Node head=null; //first node
+    Node tail=null;//list node
     int size =0;
     //add last
     public void add(int val){
@@ -32,61 +32,87 @@ public class LinkedList {
     public void print(){
         Node node=head;
         while (node!=null){
-            System.out.print(node.data+" ");
+            System.out.print(node.data+" -> ");
             node=node.next;
         }
     }
-    public Node find(int val) {
+    public void find(int val) {
         Node node = head;
         while (node != null) {
             if (node.data == val) {
-                return node;
+                System.out.println(node+ " is found");
             }
-            node = node.next;
+                node = node.next;
         }
-        return null;
     }
-    public void delete(Node node){
+    public void delete(int val){
+     // if linked list is empty
+        if (head==null)
+            return ;
+        //store head node
         Node temp=head;
-        while (temp !=node){
+        if (val==0){
+            head=head.next;
+            return;
+        }
+        //find previous node of the node to delete
+        while (temp.next!=null && temp.next.data!=val){
             temp=temp.next;
         }
-        temp.next=temp.next.next;
-        size--;
-
+        //if position is more than size of list
+        if (temp.next == null){
+           System.out.println("element not found");
+        return;
+        }
+        //Node ->next is the node to be deleted
+        //store pointer to next of node to be deleted
+        temp.next= temp.next.next;
     }
     //take input from user
     public void takeInput(){
-        String ser="To add element press 1" +
-                "To add element in first press2  " +
-                "To print press 3" +
-                "To find element press 4" +
-                "To delete element press 5" +
-                "To exit press 6";
+        String ser="\n"+
+                "1-add element\t\t" +
+                "2-add element first\t\t " +
+                "3-print \t\t" +
+                "4-find element\t\t" +
+                "5-delete element\t\t" +
+                "6-exit\t\t";
         System.out.println(ser);
         int choice=sc.nextInt();
         switch (choice) {
             case 1 -> {
-                System.out.println("Enter the value to add");
-                int val = sc.nextInt();
-                add(val);
+                    System.out.println("Enter size element number ");
+                    int size = sc.nextInt();
+                    for (int i = 0; i < size; i++) {
+                        int val = sc.nextInt();
+                        add(val);
+                    }
+                System.out.println("Done");
+                    takeInput();
             }
             case 2 -> {
                 System.out.println("Enter the value to add in first");
                 int val1 = sc.nextInt();
                 ad_First(val1);
+                takeInput();
             }
-            case 3 -> print();
+            case 3 -> {
+                print();
+                takeInput();
+            }
             case 4 -> {
                 System.out.println("Enter the value to find");
                 int val2 = sc.nextInt();
-                Node node1 = find(val2);
+                find(val2);
+                takeInput();
             }
             case 5 -> {
                 System.out.println("Enter the value to delete");
                 int val3 = sc.nextInt();
-                Node node2 = find(val3);
-                delete(node2);
+                //Node node2 = find(val3);
+                delete(val3);
+                System.out.println("Done");
+                takeInput();
             }
             case 6 -> {
                 System.out.println("Exiting");
@@ -94,12 +120,8 @@ public class LinkedList {
             }
         }
     }
-
-
-
     public static void main(String[] args) {
         LinkedList linkedList=new LinkedList();
         linkedList.takeInput();
     }
-
 }
